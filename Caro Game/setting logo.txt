@@ -1,0 +1,19 @@
+                        AAAAAA                         
+                       AAAAAAAA                        
+              AAAAA   AAAAAAAAAA  AAAAA                 
+           AAAAABBBBBBBBBBBBBBBBBBBBBBBAAAA               
+             AAAAAABBBBBBBBBBBBBBBBBAAAAA               
+              AAAAAAAABBBBBBBBBBAAAAAAA                
+              AAAAABBBB        BBBBAAAA                
+           AAAAAABBBB           BBBBAAAAAA             
+          AAAABBBBBBB            BBBBBBBAAAA           
+         AAAAABBBBBB             BBBBBBBBAAAA           
+          AAAABBBBBB            BBBBBBBAAAAA           
+             AAAABBBBB          BBBBBBAAAA               
+               AAAAABBBB      BBBBAAAAAA                
+              AAAAAAAAABBBBBBBBBAAAAAAAAA               
+             AAAAAAABBBBBBBBBBBBBBBBBAAAAA              
+            AAAABBBBBBBBBBBBBBBBBBBBBBBAAAA                
+             AAAAA     AAAAAAAA     AAAAA                  
+                        AAAAAA                         
+                                                       
