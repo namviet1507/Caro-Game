@@ -33,7 +33,7 @@ void Controller::showCursor(bool show)
 
 void Controller::setConsoleTitle()
 {
-	SetConsoleTitle(L"\u0050\u0049\u004b\u0041\u0043\u0048\u0055"); // PIKACHU
+	SetConsoleTitleA("CARO GAME");
 }
 
 void Controller::setAndCenterWindow()
@@ -97,8 +97,10 @@ int Controller::getConsoleInput() {
 			return 10;
 		else if (c == 77 || c == 109) // M, m
 			return 11;
-		else if (c == 78 || c == 110)
+		else if (c == 78 || c == 110) // N, n
 			return 12;
+		else if (c == 85 || c == 117) // U, u
+			return 14;
 		else
 			return 0;                 //nút khác
 	}

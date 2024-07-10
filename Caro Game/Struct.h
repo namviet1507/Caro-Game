@@ -1,5 +1,8 @@
 ﻿#pragma once
 #include <iostream>
+#include <cstdlib>
+#include <io.h>
+#include <fcntl.h>
 #include <string>
 #include <windows.h>
 #include <conio.h>
@@ -8,6 +11,10 @@
 #include <chrono>
 #include <iomanip>
 #include <fstream>
+#include <map>
+#include <string.h>
+#include <cstdlib>
+#include <stdlib.h>
 
 // COLOR CODE
 #define BLACK 0
@@ -46,16 +53,13 @@
 
 // char
 #define _DELETE ' '
-#define LIST_FILE "listFile.txt"
+#define LIST_FILE "listFile.bin"
 
 using namespace std;
 
 struct Player {
-	string playerName = "";
-	string playerID = "";
-	string className = "";
-	int score{};
-	string mode;
+	char playerName[100];
+	int score = 0;
 };
 
 struct Menu {
@@ -69,10 +73,10 @@ struct Menu {
 	static void Setting();
 	static void goBack();									//Trở về menu
 	static void SetColor(int, int);							//Cài đặt màu
-	static void readLoadGame();							//Đọc bảng xếp hạng
-	static void writeLoadGame(Player);					//Viết bảng xếp hạng
+	static void readLoadGame();								//Đọc bảng xếp hạng
 	static void printRectangle(int, int, int, int);			//Vẽ hình chữ nhật
 	static int printLevel();								//In ra mức độ chơi
 	static void helpScreen();								//Màn hình hướng dẫn
+	static void printVietnamese(wstring);
 	static string printListFile();
 };
