@@ -627,7 +627,7 @@ void Game::resetGame() {
 				Controller::gotoXY(62, 21 + i);
 				cout << "           ";
 			}
-			Controller::gotoXY(66, 22);
+			Controller::gotoXY(65, 22);
 			Menu::printVietnamese(L"KHÔNG");
 		}
 		else {
@@ -637,7 +637,7 @@ void Game::resetGame() {
 			Menu::SetColor(BRIGHT_WHITE, PURPLE);
 			Menu::printRectangle(62, 21, 9, 2);
 			Menu::SetColor(BRIGHT_WHITE, PURPLE);
-			Controller::gotoXY(66, 22);
+			Controller::gotoXY(65, 22);
 			Menu::printVietnamese(L"KHÔNG");
 		}
 		int temp, key;
