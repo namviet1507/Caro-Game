@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <io.h>
 #include <fcntl.h>
+#include <codecvt>
+#include <locale>
 #include <string>
 #include <windows.h>
 #include <conio.h>
@@ -58,14 +60,14 @@
 using namespace std;
 
 struct Player {
-	char playerName[100];
+	wstring playerName;
 	int score = 0;
 };
 
 struct Menu {
-	static bool exitGame;									//Cờ thoát game
 	static bool music_is_open;
 	static bool sound_is_open;
+	static bool isVie;
 	static void printMainScreen();							//In ra màn hình chính
 	static void printLogo();
 	static void printLogoEffect();
@@ -78,5 +80,7 @@ struct Menu {
 	static int printLevel();								//In ra mức độ chơi
 	static void helpScreen();								//Màn hình hướng dẫn
 	static void printVietnamese(wstring);
-	static string printListFile();
+
+	static void printListFile(int start, int end, vector<string> arrFilename);
+	static string getFile();
 };

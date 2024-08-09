@@ -46,7 +46,6 @@ struct Game {
 
 	static void processSaveFile(char);		// Lưu file
 	static void processLoadFile(string filename);	// Tải file
-
 	// nếu nhấn enter mới check
 	static bool checkWinGameCol(Point*); // kiểm tra theo chiều dọc
 	static bool checkWinGameRow(Point*); // kiểm tra theo chiều ngang

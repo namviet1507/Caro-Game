@@ -1,6 +1,4 @@
 ﻿#include "Game.h"
-#include "Struct.h"
-#include "Point.h"
 
 Point** Game::board = NULL;
 Point* Game::cur_point = NULL;
@@ -124,10 +122,9 @@ void Game::printScoreBoard() {
 	Menu::printRectangle(x + 2, y + 1, 38, 9);
 	Controller::gotoXY(x + 4, y + 4);
 	Menu::printVietnamese(L"Người chơi 1");
-	//cout << "PLAYER 1: ";
 	Menu::SetColor(BRIGHT_WHITE, RED);
 	Controller::gotoXY(x + 5, y + 5);
-	cout << a.playerName;
+	Menu::printVietnamese(a.playerName);
 	Controller::gotoXY(x, y + 1);
 	cout << R"(
 											 ___    ___ 
@@ -142,7 +139,8 @@ void Game::printScoreBoard() {
 
 	Menu::SetColor(BRIGHT_WHITE, RED);
 	Controller::gotoXY(x + 4, y + 7);
-	cout << "Won: " << a.score;
+	Menu::printVietnamese(L"Điểm: ");
+	cout << a.score;
 
 	Menu::SetColor(BRIGHT_WHITE, BLACK);
 	Menu::printRectangle(x + 2, y + 11, 38, 9);
@@ -155,10 +153,9 @@ void Game::printScoreBoard() {
 		Menu::SetColor(BRIGHT_WHITE, BLACK);
 		Controller::gotoXY(x + 4, y + 14);
 		Menu::printVietnamese(L"Người chơi 2");
-		//cout << "PLAYER 2: ";
 		Menu::SetColor(BRIGHT_WHITE, LIGHT_BLUE);
 		Controller::gotoXY(x + 5, y + 15);
-		cout << b.playerName;
+		Menu::printVietnamese(b.playerName);
 	}
 
 	Controller::gotoXY(x, y + 11);
@@ -174,25 +171,22 @@ void Game::printScoreBoard() {
 
 	Menu::SetColor(BRIGHT_WHITE, BLUE);
 	Controller::gotoXY(x + 4, y + 17);
-	cout << "Won: " << b.score;
+	Menu::printVietnamese(L"Điểm: ");
+	cout << b.score;
 
 	Menu::SetColor(BRIGHT_WHITE, GREEN);
 	Menu::printRectangle(x + 3, y + 21, 15, 2);
 	Controller::gotoXY(x + 7, y + 22);
 	Menu::printVietnamese(L"Q: THOÁT");
-	//cout << "Q: QUIT";
 	Menu::printRectangle(x + 24, y + 21, 15, 2);
 	Controller::gotoXY(x + 27, y + 22);
 	Menu::printVietnamese(L"L: LƯU GAME");
-	//cout << "L: SAVE";
 	Menu::printRectangle(x + 3, y + 24, 15, 2);
 	Controller::gotoXY(x + 6, y + 25);
 	Menu::printVietnamese(L"H: TRỢ GIÚP");
-	//cout << "H: HELP";
 	Menu::printRectangle(x + 24, y + 24, 15, 2);
 	Controller::gotoXY(x + 27, y + 25);
 	Menu::printVietnamese(L"M: CÀI ĐẶT");
-	//cout << "M: SETTING";
 	Menu::SetColor(BRIGHT_WHITE, PURPLE);
 	Controller::gotoXY(x + 12, y + 27);
 	if (strlen(Game::FILENAME) != 0) {
@@ -318,6 +312,8 @@ void Game::controlPoint() {
 				exit(0);
 				return;
 			case 2: // up
+				if (Menu::sound_is_open)
+					Controller::playSound(MOVE_SOUND);
 				if (cur_point->row > 0) {
 
 					if (cur_point->sign == 'X')
@@ -331,6 +327,8 @@ void Game::controlPoint() {
 				}
 				break;
 			case 3: // left
+				if (Menu::sound_is_open)
+					Controller::playSound(MOVE_SOUND);
 				if (cur_point->col > 0) {
 
 					if (cur_point->sign == 'X')
@@ -344,6 +342,8 @@ void Game::controlPoint() {
 				}
 				break;
 			case 4: // right
+				if (Menu::sound_is_open)
+					Controller::playSound(MOVE_SOUND);
 				if (cur_point->col < BOARD_SIZE - 1) {
 
 					if (cur_point->sign == 'X')
@@ -357,6 +357,8 @@ void Game::controlPoint() {
 				}
 				break;
 			case 5: // down
+				if (Menu::sound_is_open)
+					Controller::playSound(MOVE_SOUND);
 				if (cur_point->row < BOARD_SIZE - 1) {
 
 					if (cur_point->sign == 'X')
@@ -503,9 +505,6 @@ void Game::controlPoint() {
 					}
 
 					if (checkDraw()) {
-						/*Controller::gotoXY(60, 15);
-						Menu::SetColor(GREEN, BRIGHT_WHITE);
-						cout << "Draw";*/
 						if (Menu::music_is_open)
 							Controller::playSound(LOSE_SOUND);
 						Sleep(1000);
@@ -519,6 +518,8 @@ void Game::controlPoint() {
 				}
 				break;
 			case 7: // Help
+				timeLeft = 15;
+				originalTime = time(0);
 				Menu::helpScreen();
 				break;
 			case 8: // Quit
@@ -531,12 +532,18 @@ void Game::controlPoint() {
 				break;
 			case 9: // L, l
 				processSaveFile(last_sign);
+				timeLeft = 15;
+				originalTime = time(0);
 				break;
 			case 11: // Setting
 				Menu::Setting();
+				timeLeft = 15;
+				originalTime = time(0);
 				break;
 			case 14: // Undo
 				UndoStep(last_sign);
+				timeLeft = 15;
+				originalTime = time(0);
 				break;
 			default:
 				break;
@@ -566,6 +573,25 @@ void Game::resetGame() {
 			)";
 	}
 	else {
+		Menu::SetColor(BRIGHT_WHITE, RED);
+		Controller::gotoXY(30, 2);
+		Menu::printVietnamese(L"Người chơi 1: ");
+		Controller::gotoXY(33, 3);
+		Menu::printVietnamese(L"Tên:  ");
+		Menu::printVietnamese(a.playerName);
+		Controller::gotoXY(33, 4);
+		Menu::printVietnamese(L"Điểm:  ");
+		cout << a.score;
+
+		Menu::SetColor(BRIGHT_WHITE, BLUE);
+		Controller::gotoXY(70, 2);
+		Menu::printVietnamese(L"Người chơi 2: ");
+		Controller::gotoXY(73, 3);
+		Menu::printVietnamese(L"Tên:  ");
+		Menu::printVietnamese(b.playerName);
+		Controller::gotoXY(73, 4);
+		Menu::printVietnamese(L"Điểm:  ");
+		cout << b.score;
 		if (Game::XWin) {
 			Menu::SetColor(BRIGHT_WHITE, RED);
 			Controller::gotoXY(0, 5);
@@ -1187,11 +1213,15 @@ void Game::processSaveFile(char last_sign) {
 							string pmet = Game::FILENAME + tt;
 							outFile.open("readLoadGame/" + pmet, ios::out | ios::binary);
 
-							outFile.write((char*)&a.playerName, sizeof(a.playerName));
+							size_t length = a.playerName.size();
+							outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
+							outFile.write(reinterpret_cast<const char*>(a.playerName.data()), length * sizeof(wchar_t));
 
 							outFile.write((char*)&a.score, sizeof(a.score));
 
-							outFile.write((char*)&b.playerName, sizeof(b.playerName));
+							length = b.playerName.size();
+							outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
+							outFile.write(reinterpret_cast<const char*>(b.playerName.data()), length * sizeof(wchar_t));
 
 							outFile.write((char*)&b.score, sizeof(b.score));
 
@@ -1259,11 +1289,9 @@ void Game::processSaveFile(char last_sign) {
 	Menu::SetColor(BRIGHT_WHITE, RED);
 	Controller::gotoXY(64, 13);
 	Menu::printVietnamese(L"NHẬP TÊN FILE");
-	//cout << "Input your file name";
 	Menu::SetColor(RED, BRIGHT_WHITE);
 	Controller::gotoXY(55, 20);
 	Menu::printVietnamese(L"NHẬP TÊN FILE ÍT HƠN 15 KÝ TỰ !");
-	//cout << "  Please enter your file under 15 characters!  ";
 	Menu::SetColor(BRIGHT_WHITE, PURPLE);
 	Controller::gotoXY(56, 14);
 	for (int i = 0; i < 30; i++)
@@ -1342,11 +1370,15 @@ void Game::processSaveFile(char last_sign) {
 
 	outFile.open("readLoadGame/" + gan, ios::out | ios::binary);
 
-	outFile.write((char*)&a.playerName, sizeof(a.playerName));
+	size_t length = a.playerName.size();
+	outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
+	outFile.write(reinterpret_cast<const char*>(a.playerName.data()), length * sizeof(wchar_t));
 
 	outFile.write((char*)&a.score, sizeof(a.score));
 
-	outFile.write((char*)&b.playerName, sizeof(b.playerName));
+	length = b.playerName.size();
+	outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
+	outFile.write(reinterpret_cast<const char*>(b.playerName.data()), length * sizeof(wchar_t));
 
 	outFile.write((char*)&b.score, sizeof(b.score));
 
@@ -1424,11 +1456,18 @@ void Game::processLoadFile(string filename) {
 	char last_sign, sign;
 	size_t size;
 
-	inFile.read((char*)&a.playerName, sizeof(a.playerName));
+	size_t length;
+	inFile.read(reinterpret_cast<char*>(&length), sizeof(length));
+	wstring wstr1(length, L'\0');
+	inFile.read(reinterpret_cast<char*>(&wstr1[0]), length * sizeof(wchar_t));
+	a.playerName = wstr1;
 
 	inFile.read((char*)&a.score, sizeof(a.score));
 
-	inFile.read((char*)&b.playerName, sizeof(b.playerName));
+	inFile.read(reinterpret_cast<char*>(&length), sizeof(length));
+	wstring wstr2(length, L'\0');
+	inFile.read(reinterpret_cast<char*>(&wstr2[0]), length * sizeof(wchar_t));
+	b.playerName = wstr2;
 
 	inFile.read((char*)&b.score, sizeof(b.score));
 
@@ -1449,10 +1488,6 @@ void Game::processLoadFile(string filename) {
 		history.push(&board[row][col]);
 	}
 
-	while (history.empty() == false) {
-		history.pop();
-	}
-
 	system("cls");
 	system("color F0");
 	printBoard();
@@ -1468,36 +1503,34 @@ void Game::signup() {
 	Menu::printLogoStandard();
 	Menu::SetColor(BRIGHT_WHITE, RED);
 	Controller::gotoXY(28, 16);
-	Menu::printVietnamese(L"Nhập tên của bạn ngắn thôi nha, ít hơn 10 ký tự");
-	//cout << "Please enter your name shortly, under 10 characters!";
+	Menu::printVietnamese(L"Nhập tên của bạn ngắn thôi nha, ít hơn 20 ký tự");
 	Menu::SetColor(BRIGHT_WHITE, LIGHT_BLUE);
 	Controller::gotoXY(35, 18);
 	Menu::printVietnamese(L"Nhập tên:  ");
-	//cout << "Enter your name: ";
+	_setmode(_fileno(stdin), _O_U16TEXT);
 	if (Game::mode == 0) {
-		cin.getline(a.playerName, 100);
-		if (strcmp(a.playerName, "") == 0)
-			strcpy_s(a.playerName, 100, "Unknown");
-		strcpy_s(b.playerName, 100, "BOT");
+		getline(wcin, a.playerName);
+		if (a.playerName == L"")
+			a.playerName = L"Unknown";
+		b.playerName = L"BOT";
 	}
 	else if (Game::mode == 1) {
 		Menu::SetColor(BRIGHT_WHITE, PURPLE);
 		Controller::gotoXY(40, 20);
 		Menu::printVietnamese(L"Người chơi 1:  ");
-		//cout << "PLAYER 1: ";
-		cin.getline(a.playerName, 100);
-		if (strcmp(a.playerName, "") == 0)
-			strcpy_s(a.playerName, 100, "Unknown");
+		getline(wcin, a.playerName);
+		if (a.playerName == L"")
+			a.playerName = L"Unknown";
 		if (Menu::sound_is_open)
 			Controller::playSound(ENTER_SOUND);
 
 		Controller::gotoXY(40, 22);
 		Menu::printVietnamese(L"Người chơi 2:  ");
-		//cout << "PLAYER 2: ";
-		cin.getline(b.playerName, 100);
-		if (strcmp(b.playerName, "") == 0)
-			strcpy_s(b.playerName, 100, "Unknown");
+		getline(wcin, b.playerName);
+		if (b.playerName == L"")
+			b.playerName = L"Unknown";
 	}
+	_setmode(_fileno(stdin), _O_TEXT);
 	if (Menu::sound_is_open)
 		Controller::playSound(ENTER_SOUND);
 }
