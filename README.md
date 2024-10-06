@@ -14,6 +14,10 @@
 - In this project, we will combine basic techniques and data structures to build a simple game, checkers.
 - To complete this project, we need basic knowledge such as: file processing, handles, one/two-dimensional array data structures, etc.
 - The tutorial helps students build a game at a basic level, and they can research on their own to complete it in the best possible way.
+<p align="center">
+  <img scr="https://github.com/user-attachments/assets/0e5d85d9-169d-4c3e-ba65-56f2dc1d8208"/>
+</p>
+
 ### 2. Game Script
 - At first, when entering the game, a checkers board will appear, the player will use the keys 'W', 'A', 'S', 'D' to adjust the direction of movement. When the player presses the 'enter' key, an 'X' or 'O' will appear depending on the turn.
 - When one of the two players wins according to the checkers rules, the screen will display a line of congratulations to the winner. Then the user will be asked if they want to continue playing or not. If the "y" key is selected, the program will restart the data from the beginning, and if any key is pressed, the program will exit.
