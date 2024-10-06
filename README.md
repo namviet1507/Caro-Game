@@ -18,7 +18,7 @@
 - The tutorial helps students build a game at a basic level, and they can research on their own to complete it in the best possible way.
 
 <p align="center">
-  <img align="center" width="50" scr="https://github.com/user-attachments/assets/0e5d85d9-169d-4c3e-ba65-56f2dc1d8208"/>
+  <img scr="https://github.com/user-attachments/assets/b3b004a6-df1a-4165-99ce-cf337c86c965"/>
 </p>
 
 ### 2. Game Script
