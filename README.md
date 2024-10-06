@@ -5,7 +5,9 @@
 <h2 align="center">Hello 👋, I'm Nam Viet </h2>
 <p align="center">
   <img align="right" width="100" src="https://github.com/user-attachments/assets/7c21b3e3-39a0-4887-88a1-dfc34ccb5d21" />
-  <h3 align="center">A information technology student from Vietnam <img width="30" src="https://img.icons8.com/?size=100&id=60257&format=png&color=000000"/> </h3>
+  <h3 align="center">A information technology student from Vietnam 
+    <img width="30" src="https://img.icons8.com/?size=100&id=60257&format=png&color=000000"/> 
+  </h3>
   <h3 align="center">I'm studying University of Science - VietNam National University Ho Chi Minh City </h3>
 </p>
 
@@ -14,8 +16,9 @@
 - In this project, we will combine basic techniques and data structures to build a simple game, checkers.
 - To complete this project, we need basic knowledge such as: file processing, handles, one/two-dimensional array data structures, etc.
 - The tutorial helps students build a game at a basic level, and they can research on their own to complete it in the best possible way.
+
 <p align="center">
-  <img scr="https://github.com/user-attachments/assets/0e5d85d9-169d-4c3e-ba65-56f2dc1d8208"/>
+  <img align="center" width="50" scr="https://github.com/user-attachments/assets/0e5d85d9-169d-4c3e-ba65-56f2dc1d8208"/>
 </p>
 
 ### 2. Game Script
