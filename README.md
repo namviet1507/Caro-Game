@@ -17,9 +17,9 @@
 - To complete this project, we need basic knowledge such as: file processing, handles, one/two-dimensional array data structures, etc.
 - The tutorial helps students build a game at a basic level, and they can research on their own to complete it in the best possible way.
 
-<p align="center">
-  <img scr="https://github.com/user-attachments/assets/b3b004a6-df1a-4165-99ce-cf337c86c965"/>
-</p>
+
+![image](https://github.com/user-attachments/assets/9aafce4b-6300-427d-928d-0b1155c18555)
+
 
 ### 2. Game Script
 - At first, when entering the game, a checkers board will appear, the player will use the keys 'W', 'A', 'S', 'D' to adjust the direction of movement. When the player presses the 'enter' key, an 'X' or 'O' will appear depending on the turn.
