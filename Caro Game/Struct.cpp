@@ -598,13 +598,6 @@ void Menu::printLogoStandard() {
 
 int check = 1;
 void Menu::printLogo() {
-	Menu::SetColor(BRIGHT_WHITE, BLUE);
-	Controller::gotoXY(35, 2);
-	if (Menu::isVie)
-		Menu::printVietnamese(L"Bùi Nam Việt - Trương Quang Huy - Trương Hoàng Lâm");
-	else cout << "Bui Nam Viet - Truong Quang Huy - Truong Hoang Lam";
-	Controller::gotoXY(45, 3);
-	cout << "23127516 - 23127530 - 23127402" << endl;
 	if (check) {
 		check = 0;
 		Menu::printLogoEffect();
